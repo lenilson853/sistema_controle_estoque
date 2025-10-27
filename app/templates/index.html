@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Relatório Geral de Estoque{% endblock %}
+
+{% block content %}
+    <h1 class="mb-3">Relatório Geral de Estoque</h1>
+    
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cód. Barras</th>
+                            <th>Preço (R$)</th>
+                            <th class="text-center text-success">Total Entradas</th>
+                            <th class="text-center text-danger">Total Saídas</th>
+                            <th class="text-center text-primary">Estoque Atual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in relatorio %}
+                        <tr>
+                            <td>{{ item.nome }}</td>
+                            <td>{{ item.codigo_barras or 'N/A' }}</td>
+                            <td>R$ {{ "%.2f"|format(item.preco_venda) }}</td>
+                            
+                            <td class="text-center text-success fw-bold">
+                                {{ item.total_entradas or 0 }}
+                            </td>
+                            <td class="text-center text-danger fw-bold">
+                                {{ item.total_saidas or 0 }}
+                            </td>
+                            <td class="text-center text-primary fw-bold fs-5">
+                                {{ item.estoque_atual }}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">Nenhum produto cadastrado ainda.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
