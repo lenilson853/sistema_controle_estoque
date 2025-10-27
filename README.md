@@ -100,7 +100,7 @@ Todas as dependências estão listadas em requirements.txt
 🧑‍💻 Autor
 
 Lenilson José do Nascimento
-📧 lenylsonnascimento@.com
+📧 lenylson.nascimento@.com
 
 💼 GitHub
 
